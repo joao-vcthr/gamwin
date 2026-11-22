@@ -26,12 +26,12 @@ This README is the quick reference for the current structure, available commands
 
 ## Getting started
 
-The easiest and most reliable way to begin is to launch PowerShell or Windows Terminal and use the bootstrap installer from GitHub.
+The easiest and most reliable way to begin is to launch PowerShell or Windows Terminal and use the bootstrap installer from GitHub. You may need set your powershell Execution Policy to 'Unrestricted' or 'Bypass' in order to use the scripts
 
 ### Recommended quick start
 
 ```powershell
-powershell -ExecutionPolicy Bypass -Command "irm `"https://raw.githubusercontent.com/joao-vcthr/gamwin/main/bootstrap.ps1`" | iex"
+irm "https://raw.githubusercontent.com/joao-vcthr/gamwin/main/bootstrap.ps1" | iex
 ```
 
 This downloads the bootstrap script and runs the project setup flow from the repository.
