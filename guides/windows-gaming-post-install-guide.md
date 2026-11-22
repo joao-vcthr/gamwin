@@ -2,20 +2,14 @@
 
 ---
 
-## 1. Repair System
-
-```powershell
-DISM /Online /Cleanup-Image /RestoreHealth ; sfc /SCANNOW ; Repair-Volume -DriveLetter 'C' -OfflineScanAndFix -Confirm:$false -Verbose ; Optimize-Volume -DriveLetter 'C' -ReTrim -Verboses
-```
-
-## 2. System Update
+## 1. System Update
 
 * Check and install all pending Windows Update updates.
 * Update Microsoft Store and all components.
 
 ---
 
-## 3. Driver Installation
+## 2. Driver Installation
 
 ### Essential Drivers
   * Chipset (Restart)
@@ -29,7 +23,7 @@ DISM /Online /Cleanup-Image /RestoreHealth ; sfc /SCANNOW ; Repair-Volume -Drive
 
 ---
 
-## 4. Drivers Configuration
+## 3. Drivers Configuration
 
 ### Setup AMD Adrenalin or Nvidia App according to your graphics card
 
@@ -44,55 +38,55 @@ DISM /Online /Cleanup-Image /RestoreHealth ; sfc /SCANNOW ; Repair-Volume -Drive
 
 ---
 
-## 5. Basic System Configuration
+## 4. Basic System Configuration
 
 * Run '[1] Setup System' on Gamwin
 
 ---
 
-## 6. Remove Bloatware
+## 5. Remove Bloatware
 
 * Run '[2] Debloat System' on Gamwin
 
 ---
 
-## 7. Install Dependencies
+## 6. Install Dependencies
 
 * Run '[3] Install Dependencies' on Gamwin
 
 ---
 
-## 8. Install Applications
+## 7. Install Applications
 
 * Run '[4] Install Applications' on Gamwin
 
 ---
 
-## 10. Import Backup (if needed)
+## 8. Import Backup (if needed)
 
 * Run '[5] Import Backup' on Gamwin
 
 ---
 
-## 11. Privacy Configuration
+## 9. Privacy Configuration
 
-* Run '[6] Configure Privacy' on Gamwin
-
----
-
-## 12. System Behavior Configuration
-
-* Run '[7] Configure System Behavior' on Gamwin
+* Run '[7] Configure Privacy' on Gamwin
 
 ---
 
-## 13. Disable Services
+## 10. System Behavior Configuration
 
-* Run '[8] Disable Services' on Gamwin
+* Run '[8] Configure System Behavior' on Gamwin
 
 ---
 
-## 13. System Personalization and Configuration
+## 11. Disable Services
+
+* Run '[9] Disable Services' on Gamwin
+
+---
+
+## 12. System Personalization and Configuration
 
 ### Advanced System Settings
 
@@ -141,7 +135,7 @@ DISM /Online /Cleanup-Image /RestoreHealth ; sfc /SCANNOW ; Repair-Volume -Drive
 
 ---
 
-## 14. Apps Configuration
+## 13. Apps Configuration
 
 ### Browsers
   * Go to General Settings
@@ -168,7 +162,7 @@ DISM /Online /Cleanup-Image /RestoreHealth ; sfc /SCANNOW ; Repair-Volume -Drive
 
 ---
 
-## 15. System Cleanup
+## 14. System Cleanup
 
 * System > Storage > Temporary Files
 * Run '[6] Clean System' on Gamwin
