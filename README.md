@@ -16,6 +16,130 @@ This README is the quick reference for the current structure, available commands
 
 ---
 
+## Requirements
+
+- Windows 11 (clean install is recommended)
+- Internet connection for dependency and app installation steps
+- `#Requires -RunAsAdministrator` is enforced in some of the scripts
+
+---
+
+## Getting started
+
+The easiest and most reliable way to begin is to launch PowerShell or Windows Terminal and use the bootstrap installer from GitHub.
+
+### Recommended quick start
+
+```powershell
+powershell -ExecutionPolicy Bypass -Command "irm `"https://raw.githubusercontent.com/joao-vcthr/gamwin/main/bootstrap.ps1`" | iex"
+```
+
+This downloads the bootstrap script and runs the project setup flow from the repository.
+
+### Using the launcher
+
+Go to 'Gamwin' folder on file explorer, right-click 'launcher.ps1' and click 'Run with Powershell'
+
+If Powershell's Execution Policy is set to 'Restricted' the launcher will not work. To fix this, launch PowerShell or Windows Terminal as Administrator and run:
+
+```powershell
+Set-ExecutionPolicy 'Unrestricted'
+```
+
+### Cloning the repo manually, and using starting gamwin from the main.ps1 file 
+
+If you prefer to work locally from a checked-out copy:
+
+Launch PowerShell or Windows Terminal and change the directory to where 'Gamwin' is saved, example 'cd $HOME\Downloads\gamwin', and run:
+```powershell
+git clone https://github.com/joao-vcthr/gamwin-mode.git
+Set-Location -Path .\gamwin-mode
+powershell -ExecutionPolicy Bypass -File ".\main.ps1"
+```
+
+This opens the main interactive menu, which is the recommended path for most users.
+
+### Running the menu from the repository
+
+If you already have the repo checked out, you can start it directly with:
+
+```powershell
+Set-Location .\gamwin-mode
+powershell -ExecutionPolicy Bypass -File ".\main.ps1"
+```
+
+### Advanced: run individual scripts directly
+
+Use this only if you want to execute a specific step manually instead of using the menu:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\scripts\SetupSystem.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\DebloatSystem.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\InstallDependencies.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\InstallApplications.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\ConfigureSystemBehavior.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\ConfigurePrivacy.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\DisableServices.ps1"
+powershell -ExecutionPolicy Bypass -File ".\scripts\CleanSystem.ps1"
+```
+
+> For a clean Windows 11 install, start with the menu-driven flow and follow the recommended order in the next section.
+
+---
+
+## Main menu options
+
+The interactive menu in `./main.ps1` includes the following actions:
+
+| Menu option | Script | What it does |
+|---|---|---|
+| 1 | `SetupSystem.ps1` | Basic OS setup: system clock, network/DNS, keyboard layout, delivery optimization, power plan, and system restore disablement. |
+| 2 | `DebloatSystem.ps1` | Removes AppX packages, optional capabilities, Windows features, and OneDrive based on the config data. |
+| 3 | `InstallDependencies.ps1` | Enables .NET 3.5 and installs dependency packages from `configs/install/Dependencies.psd1`. |
+| 4 | `InstallApplications.ps1` | Installs gaming and utility apps from `configs/install/GamingApplications.psd1`. |
+| 5 | `ImportBackup.ps1` | Imports the saved backup/configuration profile for the system. |
+| 6 | `CleanSystem.ps1` | Runs a cleanup pass: WinSxS component cleanup, temp files, recycle bin, DNS cache, Winsock reset, and TRIM optimization. |
+| 7 | `ConfigurePrivacy.ps1` | Disables app permissions and telemetry. |
+| 8 | `ConfigureSystemBehavior.ps1` | Disables pointer precision, Game DVR, and enables taskbar end-task behavior. |
+| 9 | `DisableServices.ps1` | Stops and disables non-essential services defined in `configs/Services.psd1`. |
+| E | `Extras.ps1` | Opens a secondary menu with additional tasks such as DNS tweaks, MPO disabling, and repair flows. |
+| 0 | — | Exits the menu. |
+
+---
+
+## Extra scripts
+
+These scripts are available through the `Extras` menu (`scripts/Extras.ps1`, main menu option `E`) and can also be run standalone from `scripts/extras/`:
+
+| Menu option | Script | What it does |
+|---|---|---|
+| 1 | `SetNewDnsProvider.ps1` | Changes the DNS provider used by the Ethernet adapter (Cloudflare, Google, OpenDNS, Quad9, reset to default, or keep the current configuration). |
+| 2 | `RepairSystem.ps1` | Runs repair tasks such as `DISM /RestoreHealth`, `sfc /scannow`, offline volume repair, and SSD TRIM optimization. |
+| 3 | `DisableMultiPlaneOverlay.ps1` | Disables Multi-Plane Overlay (MPO) in the Desktop Window Manager. |
+| 0 | — | Returns to the main menu. |
+
+> These require administrator privileges. Use the repair and cleanup routines periodically when system errors, slowness, or storage issues appear.
+
+---
+
+## Recommended flow
+
+For a fresh Windows 11 install, the typical order is:
+
+1. Run `./main.ps1`
+2. Choose `Setup System`
+3. Choose `Debloat System`
+4. Choose `Install Dependencies`
+5. Choose `Install Applications`
+6. Choose `Configure Privacy`
+7. Choose `Configure System Behavior`
+8. Choose `Configure Services`
+9. Run `Clean System` at the end
+
+For the full walkthrough, including manual Windows settings, drivers, and app-specific personalization, see **[windows-gaming-post-install-guide.md](./windows-gaming-post-install-guide.md)**.
+
+---
+
 ## Project structure
 
 ```text
@@ -102,127 +226,3 @@ This README is the quick reference for the current structure, available commands
 ```
 
 The real entry point is `main.ps1`. The menu script orchestrates the work, while the `configs/` files define package lists and system settings, and the `functions/` folder contains reusable PowerShell logic.
-
----
-
-## Requirements
-
-- Windows 11 (clean install is recommended)
-- Internet connection for dependency and app installation steps
-- `#Requires -RunAsAdministrator` is enforced in some of the scripts
-
----
-
-## Getting started
-
-The easiest and most reliable way to begin is to launch PowerShell or Windows Terminal and use the bootstrap installer from GitHub.
-
-### Recommended quick start
-
-```powershell
-powershell -ExecutionPolicy Bypass -Command "irm `"https://raw.githubusercontent.com/joao-vcthr/gamwin/main/bootstrap.ps1`" | iex"
-```
-
-This downloads the bootstrap script and runs the project setup flow from the repository.
-
-### Using the launcher
-
-Go to 'Gamwin' folder on file explorer, right-click 'launcher.ps1' and click 'Run with Powershell'
-
-If Powershell's Execution Policy is set to 'Restricted' the launcher will not work. To fix this, launch PowerShell or Windows Terminal as Administrator and run:
-
-```powershell
-Set-ExecutionPolicy 'Unrestricted'
-```
-
-### Cloning the repo manually, and using starting gamwin from the main.ps1 file 
-
-If you prefer to work locally from a checked-out copy:
-
-Launch PowerShell or Windows Terminal and change the directory to where 'Gamwin' is saved, example 'cd $HOME\Downloads\gamwin', and run:
-```powershell
-git clone https://github.com/joao-vcthr/gamwin-mode.git
-Set-Location -Path .\gamwin-mode
-powershell -ExecutionPolicy Bypass -File ".\main.ps1"
-```
-
-This opens the main interactive menu, which is the recommended path for most users.
-
-### Running the menu from the repository
-
-If you already have the repo checked out, you can start it directly with:
-
-```powershell
-Set-Location .\gamwin-mode
-powershell -ExecutionPolicy Bypass -File ".\main.ps1"
-```
-
-### Advanced: run individual scripts directly
-
-Use this only if you want to execute a specific step manually instead of using the menu:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File ".\scripts\SetupSystem.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\DebloatSystem.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\InstallDependencies.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\InstallApplications.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\ConfigureSystemBehavior.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\ConfigurePrivacy.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\ConfigureServices.ps1"
-powershell -ExecutionPolicy Bypass -File ".\scripts\CleanSystem.ps1"
-```
-
-> For a clean Windows 11 install, start with the menu-driven flow and follow the recommended order in the next section.
-
----
-
-## Main menu options
-
-The interactive menu in `./main.ps1` includes the following actions:
-
-| Menu option | Script | What it does |
-|---|---|---|
-| 1 | `SetupSystem.ps1` | Basic OS setup: system clock, network/DNS, keyboard layout, delivery optimization, power plan, and system restore disablement. |
-| 2 | `DebloatSystem.ps1` | Removes AppX packages, optional capabilities, Windows features, and OneDrive based on the config data. |
-| 3 | `InstallDependencies.ps1` | Enables .NET 3.5 and installs dependency packages from `configs/install/Dependencies.psd1`. |
-| 4 | `InstallApplications.ps1` | Installs gaming and utility apps from `configs/install/GamingApplications.psd1`. |
-| 5 | `ImportBackup.ps1` | Imports the saved backup/configuration profile for the system. |
-| 6 | `CleanSystem.ps1` | Runs a cleanup pass: WinSxS component cleanup, temp files, recycle bin, DNS cache, Winsock reset, and TRIM optimization. |
-| 7 | `ConfigureSystemBehavior.ps1` | Disables pointer precision, Game DVR, and enables taskbar end-task behavior. |
-| 8 | `ConfigurePrivacy.ps1` | Disables app permissions and telemetry. |
-| 9 | `DisableeServices.ps1` | Stops and disables non-essential services defined in `configs/Services.psd1`. |
-| E | `Extras.ps1` | Opens a secondary menu with additional tasks such as DNS tweaks, MPO disabling, and repair flows. |
-| 0 | — | Exits the menu. |
-
----
-
-## Additional maintenance scripts
-
-These scripts are still available as standalone tools outside the main menu:
-
-| Script | What it does |
-|---|---|
-| `RepairSystem.ps1` | Runs repair tasks such as `DISM /RestoreHealth`, `sfc /scannow`, and disk repair checks. |
-| `Extras.ps1` | Provides additional configuration and maintenance tasks beyond the main flow. |
-
-> Use the repair and cleanup routines periodically when system errors, slowness, or storage issues appear.
-
----
-
-## Recommended flow
-
-For a fresh Windows 11 install, the typical order is:
-
-1. Run `./main.ps1`
-2. Choose `Setup System`
-3. Choose `Debloat System`
-4. Choose `Install Dependencies`
-5. Choose `Install Applications`
-6. Choose `Configure System Behavior`
-7. Choose `Configure Privacy`
-8. Choose `Configure Services`
-9. Run `Clean System` at the end
-
-For the full walkthrough, including manual Windows settings, drivers, and app-specific personalization, see **[windows-gaming-post-install-guide.md](./windows-gaming-post-install-guide.md)**.
-
----
