@@ -2,7 +2,9 @@
 .SYNOPSIS
     Cleans up the system by removing temporary files, old restoration points, old updates, and optimizing the disk.
 .DESCRIPTION
-    This script performs a series of cleanup operations to free up disk space and improve system performance. It removes temporary files, clears the recycle bin, deletes old restoration points, cleans the DNS cache, resets the Windows Winsock catalog, and optimizes the main disk using TRIM.
+    This script performs a series of cleanup operations to free up disk space and improve system performance.
+    It removes temporary files, clears the recycle bin, deletes old restoration points,
+    cleans the DNS cache, resets the Windows Winsock catalog, and optimizes the main disk using TRIM.
     The computer will be restarted upon completion.
 .NOTES
     This script requires administrator privileges to run.
@@ -37,6 +39,17 @@ Remove-Item -Path 'C:\Users\Joao\AppData\Local\Temp\*' -Recurse -Force -ErrorAct
 
 Write-Running 'Cleaning Prefetch'
 Remove-Item -Path 'C:\Windows\Prefetch\*' -Recurse -Force -ErrorAction SilentlyContinue
+
+$choice = (Read-Host 'Clean "Downloads" folder? (Y/N) (Default = N)').Trim().ToUpperInvariant()
+switch ($choice) {
+    'Y' {
+        Write-Running 'Cleaning Downloads folder'
+        Remove-Item -Path "$env:USERPROFILE\Downloads" -Recurse -Force -ErrorAction SilentlyContinue
+    }
+    default {
+        Write-Running 'Skiping... Downloads folder will not be cleaned'
+    }
+}
 
 Write-Running 'Cleaning Recycle Bin'
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
