@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    The main entry point for MW4E.
+    The main entry point for GamWin.
 
 .DESCRIPTION
-    This script is the main entry point for MW4E, displaying the main menu, handling user input and executing the selected actions.
+    This script is the main entry point for GamWin, displaying the main menu, handling user input and executing the selected actions.
 
 .NOTES
     This script requires administrator privileges to run.

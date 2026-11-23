@@ -3,7 +3,8 @@
     Configures Windows personalization settings.
 
 .DESCRIPTION
-    This script configures various Windows personalization options such as disabling pointer precision and enabling the taskbar end task feature.
+    This script configures various Windows personalization options such as
+    disabling pointer precision and enabling the taskbar end task feature.
 
 .NOTES
     This script requires administrator privileges to run.

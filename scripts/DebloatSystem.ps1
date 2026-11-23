@@ -5,7 +5,7 @@
 .DESCRIPTION
     Removes the AppX packages, optional capabilities and Windows features defined in the
     .psd1 files under .\configs. Designed to be idempotent: items that are already absent
-    are silently skipped. Must be run with Windows PowerShell 5.1 (powershell.exe).
+    are silently skipped.
 .NOTES
     This script requires administrator privileges to run.
     Author:      joao-vcthr

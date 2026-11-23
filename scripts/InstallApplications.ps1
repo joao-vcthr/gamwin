@@ -2,7 +2,7 @@
 .SYNOPSIS
     Installs applications from a specified list.
 .DESCRIPTION
-    This script installs the applications packages defined in the .psd1 file under .\configs.
+    This script installs the applications packages defined in the .psd1 file under .\configs\install.
 .NOTES
     This script requires administrator privileges to run.
     Author:      joao-vcthr

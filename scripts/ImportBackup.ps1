@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-    Imports a backup from a specified source folder to the user's Documents\Vault folder.
+    Imports a backup from a specified source folder to a specified destination folder.
 .DESCRIPTION
-    This script copies the contents of a backup folder to the Documents\Vault folder.
+    This script copies the contents of a backup folder to the specified destination folder folder.
     It checks for the existence of the source and destination folders,
     creates the destination folder if it doesn't exist,
     and uses Robocopy to perform the copy operation with specified options.
