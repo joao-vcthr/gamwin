@@ -26,25 +26,22 @@ This README is the quick reference for the current structure, available commands
 
 ## Getting started
 
-The easiest and most reliable way to begin is to launch PowerShell or Windows Terminal and use the bootstrap installer from GitHub. You may need set your powershell Execution Policy to 'Unrestricted' or 'Bypass' in order to use the scripts
+The easiest and most reliable way to begin is to launch PowerShell or Windows Terminal and use the bootstrap installer from GitHub. You may need set your powershell Execution Policy to 'Bypass' in order to use the scripts
 
 ### Recommended quick start
 
 ```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process 
 irm "https://raw.githubusercontent.com/joao-vcthr/gamwin/main/bootstrap.ps1" | iex
 ```
 
-This downloads the bootstrap script and runs the project setup flow from the repository.
+This will give the necessary permissions and download the bootstrap script and runs the project setup flow from the repository.
+
+The execution policy will revert to the previous state when the PowerShell window is closed.
 
 ### Using the launcher
 
 Go to 'Gamwin' folder on file explorer, right-click 'launcher.ps1' and click 'Run with Powershell'
-
-If Powershell's Execution Policy is set to 'Restricted' the launcher will not work. To fix this, launch PowerShell or Windows Terminal as Administrator and run:
-
-```powershell
-Set-ExecutionPolicy 'Unrestricted'
-```
 
 ### Cloning the repo manually, and using starting gamwin from the main.ps1 file 
 
