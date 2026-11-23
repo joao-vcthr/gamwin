@@ -42,5 +42,3 @@ foreach ($package in $dependencies.Packages) {
 
 Write-Ok 'Dependencies installed! Restart the computer.'
 Request-Restart
-
-Read-Host 'Press Enter to continue'
