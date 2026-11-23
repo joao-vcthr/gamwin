@@ -63,7 +63,7 @@
         Order      = 8
     }
 
-    ConfigureServices = @{
+    DisableServices = @{
         Name       = 'Disable Services'
         FileName   = 'DisableServices.ps1'
         NeedsAdmin = $true
@@ -79,9 +79,17 @@
         Order      = 10
     }
 
+    OpenGuide = @{
+        Name       = 'Open Guide'
+        FileName   = 'OpenGuide.ps1'
+        NeedsAdmin = $false
+        OptionId   = 'G'
+        Order      = 11
+    }
+
     Exit = @{
         Name      = 'Exit'
         OptionId  = '0'
-        Order     = 11
+        Order     = 12
     }
 }
