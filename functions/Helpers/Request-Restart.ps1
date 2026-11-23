@@ -22,7 +22,7 @@ function Request-Restart {
         $option = $option.ToUpper()
 
         switch ($option) {
-            'Y' { Write-Running 'Restarting the computer' ; Restart-Computer ; $done = $true }
+            'Y' { Write-Running 'Restarting the computer' ; Restart-Computer }
             'N' { $done = $true }
             default { Write-Fail 'Invalid Option, try again' }
         }
