@@ -44,7 +44,7 @@ $choice = (Read-Host 'Clean "Downloads" folder? (Y/N) (Default = N)').Trim().ToU
 switch ($choice) {
     'Y' {
         Write-Running 'Cleaning Downloads folder'
-        Remove-Item -Path "$env:USERPROFILE\Downloads" -Recurse -Force -ErrorAction SilentlyContinue
+        Remove-Item -Path "$env:USERPROFILE\Downloads\*" -Recurse -Force -ErrorAction SilentlyContinue
     }
     default {
         Write-Running 'Skiping... Downloads folder will not be cleaned'
