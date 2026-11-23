@@ -27,7 +27,7 @@
 
 ### Setup AMD Adrenalin or Nvidia App according to your graphics card
 
-### Realtek Ethernet
+### Realtek Ethernet (Optional, not recommended on notebooks)
 * Disable Advanced EEE
 * Disable Energy-Efficient Ethernet
 * Disable Green Ethernet
