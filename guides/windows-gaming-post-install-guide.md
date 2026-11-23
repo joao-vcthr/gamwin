@@ -103,7 +103,7 @@
 
 ### Personalization
 
-* **Colors:** Adjust system colors (light/dark mode) and disable transparency.
+* **Colors:** Disable transparency.
 
 ### Apps
 
@@ -122,23 +122,22 @@
 
 * **Keyboard:**
   * Disable Sticky Keys
-  * Click '>' on the left of the option and disable all
+  * Click '>' on the left and disable all options
 
 ### Privacy & Security
 
 * **Recommendations & offers:** Disable 'Improve Start and search results'.
 * **Diagnostics & Feedback:** Set feedback frequency to "Never".
 
-### Secondary Drive (Optional)
+### Extra Drives (Optional)
 
-* Format every secondary drive(SSD/HDD) to NTFS.
+* Format every extra drive(SSD or HDD) to NTFS.
 
 ---
 
 ## 13. Apps Configuration
 
 ### Browsers
-  * Go to General Settings
   * Enable Memory Saver
   * Disable 'Continue running background extensions when the browser is closed'
 
@@ -164,7 +163,6 @@
 
 ## 14. System Cleanup
 
-* System > Storage > Temporary Files
 * Run '[6] Clean System' on Gamwin
 
 ---
