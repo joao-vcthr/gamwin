@@ -30,7 +30,7 @@ do {
     Write-Banner
     Write-Menu -Options $MenuOptions -MenuName 'EXTRAS'
     $choice = (Read-Host 'Enter your choice (1-3, 0)').Trim().ToUpperInvariant()
-    $selected = $MenuOptions.Values | Sort-Object { $_.Order } | Where-Object { $_.OptionId -eq $choice }
+    $selected = $MenuOptions.Values | Where-Object { $_.OptionId -eq $choice }
     $optionId = if ($selected) {
         $selected.OptionId
     } else {

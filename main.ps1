@@ -28,7 +28,7 @@ do {
     Write-Menu -Options $MenuOptions -MenuName 'MENU'
 
     $choice = (Read-Host 'Enter your choice (1-9, E, 0)').Trim().ToUpperInvariant()
-    $selected = $MenuOptions.Values | Sort-Object { $_.Order } | Where-Object { $_.OptionId -eq $choice }
+    $selected = $MenuOptions.Values | Where-Object { $_.OptionId -eq $choice }
     $OptionId = if ($selected) {
         $selected.OptionId
     } else {
