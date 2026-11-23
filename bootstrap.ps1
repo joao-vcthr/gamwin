@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 $owner = 'joao-vcthr'
 $repo = 'gamwin'
-$version = 'v0.1.2'
+$version = 'v0.1.3'
 
 $tempRoot = Join-Path $env:TEMP 'gamwin'
 $zipPath = Join-Path $tempRoot "$version.zip"

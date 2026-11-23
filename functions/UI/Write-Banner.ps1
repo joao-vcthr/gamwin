@@ -24,7 +24,7 @@ function Write-Banner {
 :......::::..:::::..::..:::::..:::...::...:::....::..::::..::
 '@
 
-    $version = 'v0.1.2'
+    $version = 'v0.1.3'
     $colors = 'Cyan', 'Cyan', 'Cyan', 'DarkCyan', 'DarkCyan', 'Blue', 'Blue', 'DarkBlue'
     $lines = $logo -split "`r?`n"
     $logoWidth = $lines[-1].TrimEnd().Length
