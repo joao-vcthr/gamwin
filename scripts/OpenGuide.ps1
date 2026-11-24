@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+    Opens the Windows gaming post-install guide.
+.DESCRIPTION
+    Launches guides/windows-gaming-post-install-guide.md with the default Markdown viewer for reference during setup.
+.NOTES
+    Author:      joao-vcthr
+    Date:        11/23/2026
+#>
+
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
